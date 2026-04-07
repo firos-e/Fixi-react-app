@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+
+  background: linear-gradient(45deg, #00c6ff, #ffffff);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+}
+
+.links a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: white;
+  position: relative;
+}
+
+.links a::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #00c6ff;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.links a:hover::after {
+  width: 100%;
+}

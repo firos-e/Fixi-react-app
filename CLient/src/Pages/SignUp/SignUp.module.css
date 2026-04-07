@@ -1,0 +1,176 @@
+.container {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.box {
+  width: 360px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.box input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  box-sizing: border-box;
+}
+
+.box input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.box > button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 14px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.box > button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0,198,255,0.4);
+}
+
+.text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+}
+
+.text span {
+  color: #00c6ff;
+  cursor: pointer;
+}
+
+.roleSelector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.roleBtn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.inactive {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.4);
+}
+
+.inactive:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+}
+
+.activeUser {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  border-color: #00c6ff;
+  color: white;
+  box-shadow: 0 0 14px rgba(0,198,255,0.5);
+}
+
+.activeTech {
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  border-color: #ff6b35;
+  color: white;
+  box-shadow: 0 0 14px rgba(255,107,53,0.5);
+}
+
+.serviceBox {
+  margin: 12px 0 8px;
+}
+
+.serviceLabel {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
+}
+
+.serviceGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.serviceBtn {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.serviceBtn:hover {
+  border-color: rgba(255,255,255,0.35);
+}
+
+.serviceActive {
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  border-color: #ff6b35;
+  box-shadow: 0 0 12px rgba(255,107,53,0.35);
+}
+
+.locationBox {
+  margin: 8px 0;
+}
+
+.locationBtn {
+  width: 100%;
+  padding: 11px;
+  border-radius: 10px;
+  border: 1px dashed rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.locationBtn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #00c6ff;
+}
+
+.locationText {
+  font-size: 12px;
+  opacity: 0.6;
+  margin: 6px 0 0;
+  text-align: center;
+}

@@ -1,0 +1,443 @@
+.container {
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.header p {
+  margin: 5px 0 0;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.logoutBtn,
+.refreshBtn,
+.notifyBtn {
+  padding: 8px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logoutBtn:hover {
+  background: rgba(255,0,0,0.3);
+  border-color: red;
+}
+
+.notifyBtn:hover {
+  border-color: rgba(0,198,255,0.5);
+  background: rgba(0,198,255,0.12);
+}
+
+.refreshBtn:hover {
+  border-color: rgba(0,198,255,0.5);
+  background: rgba(0,198,255,0.12);
+}
+
+.refreshBtn:disabled,
+.logoutBtn:disabled,
+.bookBtn:disabled,
+.cancelBtn:disabled,
+.filterBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.noticeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notifyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notifyBadge {
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #ff7a1a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.noticeCard,
+.card,
+.serviceSection,
+.bookingSection,
+.bookingCard,
+.profileSection,
+.locationCard,
+.field input {
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.noticeCard {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.noticeCard strong {
+  font-size: 28px;
+  color: #7fdfff;
+}
+
+.noticeCard span {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.serviceSection {
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.card {
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  border-color: rgba(0,198,255,0.4);
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.card p,
+.sectionHeader p,
+.bookingCard p,
+.emptyState,
+.metaLine {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.card p {
+  margin: 0 0 16px;
+}
+
+.bookBtn,
+.cancelBtn {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.cancelBtn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.secondaryBtn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.secondaryBtn:hover,
+.cancelBtn:hover {
+  border-color: rgba(0,198,255,0.5);
+  background: rgba(0,198,255,0.12);
+}
+
+.bookBtn:hover {
+  box-shadow: 0 0 12px rgba(0,198,255,0.4);
+  transform: translateY(-1px);
+}
+
+.profileSection {
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.74);
+}
+
+.field input {
+  padding: 12px 14px;
+  color: white;
+  outline: none;
+}
+
+.field input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.locationCard {
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.locationCard h4 {
+  margin: 0 0 6px;
+}
+
+.locationCard p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.profileActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.profileHint {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.bookingSection {
+  padding: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.sectionHeader h3 {
+  margin: 0 0 6px;
+}
+
+.sectionHeader p {
+  margin: 0;
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filterBtn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.filterBtnActive {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  border-color: transparent;
+}
+
+.bookingList {
+  display: grid;
+  gap: 14px;
+}
+
+.bookingCard {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bookingTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.bookingMain {
+  flex: 1;
+}
+
+.bookingCard h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.bookingCard p,
+.metaLine {
+  margin: 0 0 6px;
+}
+
+.bookingMeta {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  text-align: right;
+}
+
+.status {
+  display: inline-flex;
+  align-self: flex-end;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.status_pending {
+  background: rgba(255,193,7,0.16);
+  color: #ffd663;
+}
+
+.status_accepted {
+  background: rgba(0,198,255,0.16);
+  color: #72e0ff;
+}
+
+.status_completed {
+  background: rgba(82,196,26,0.16);
+  color: #9cf07c;
+}
+
+.status_cancelled {
+  background: rgba(255,107,107,0.16);
+  color: #ff9f9f;
+}
+
+.actionRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 26px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .header,
+  .sectionHeader,
+  .bookingTop,
+  .locationCard,
+  .profileActions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profileGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bookingMeta {
+    min-width: auto;
+    text-align: left;
+  }
+
+  .status {
+    align-self: flex-start;
+  }
+
+  .actionRow {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .headerActions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
