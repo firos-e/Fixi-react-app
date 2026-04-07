@@ -1,7 +1,10 @@
 const jwt = require("jsonwebtoken");
 const Booking = require("./Models/Booking");
+const { readEnv, requireEnv } = require("./utils/env");
 
-const JWT_SECRET = process.env.JWT_SECRET || "SECRET_KEY";
+const getJwtSecret = () => {
+  return requireEnv("JWT_SECRET");
+};
 
 let ioInstance = null;
 
@@ -26,7 +29,7 @@ const initializeSocket = (server) => {
 
   ioInstance = new Server(server, {
     cors: {
-      origin: "*"
+      origin: readEnv("CLIENT_ORIGIN") || "*"
     }
   });
 
@@ -38,7 +41,7 @@ const initializeSocket = (server) => {
     }
 
     try {
-      const decoded = jwt.verify(token, JWT_SECRET);
+      const decoded = jwt.verify(token, getJwtSecret());
       socket.user = decoded;
       return next();
     } catch (err) {

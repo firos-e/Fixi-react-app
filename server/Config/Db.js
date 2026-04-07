@@ -1,12 +1,24 @@
 const mongoose = require("mongoose");
+const { requireEnv } = require("../utils/env");
+
+let cachedConnection = global.mongooseConnection;
 
 const connectDB = async () => {
+  const mongoUri = requireEnv("MONGO_URI");
+
+  if (cachedConnection) {
+    return cachedConnection;
+  }
+
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    cachedConnection = await mongoose.connect(mongoUri);
+    global.mongooseConnection = cachedConnection;
     console.log("MongoDB Connected");
+    return cachedConnection;
   } catch (err) {
     console.error(err);
-    process.exit(1);
+    cachedConnection = null;
+    throw err;
   }
 };
 

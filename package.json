@@ -1,4 +1,8 @@
 {
+  "private": true,
+  "scripts": {
+    "build": "npm run build --prefix CLient"
+  },
   "devDependencies": {
     "vite": "^8.0.5"
   }

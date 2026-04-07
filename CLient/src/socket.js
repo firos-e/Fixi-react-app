@@ -2,6 +2,15 @@ import { io } from "socket.io-client";
 
 let socketInstance = null;
 
+const configuredApiUrl = import.meta.env.VITE_API_URL?.trim();
+const configuredSocketUrl = import.meta.env.VITE_SOCKET_URL?.trim();
+
+const defaultSocketUrl = configuredApiUrl
+  ? configuredApiUrl.replace(/\/api\/?$/, "")
+  : "http://localhost:5000";
+
+const socketUrl = configuredSocketUrl || defaultSocketUrl;
+
 export const connectChatSocket = (token) => {
   if (!token) {
     return null;
@@ -15,7 +24,7 @@ export const connectChatSocket = (token) => {
     return socketInstance;
   }
 
-  socketInstance = io("http://localhost:5000", {
+  socketInstance = io(socketUrl, {
     autoConnect: true,
     auth: { token }
   });

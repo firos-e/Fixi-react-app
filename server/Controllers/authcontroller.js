@@ -2,7 +2,11 @@ const User = require("../Models/User");
 const Technician = require("../Models/Technician");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = process.env.JWT_SECRET || "SECRET_KEY";
+const { requireEnv } = require("../utils/env");
+
+const getJwtSecret = () => {
+  return requireEnv("JWT_SECRET");
+};
 
 const buildTechnicianPayload = (source) => ({
   name: source.name,
@@ -104,7 +108,7 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
-    const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: "1d" });
+    const token = jwt.sign({ id: user._id, role: user.role }, getJwtSecret(), { expiresIn: "1d" });
 
     res.json({
       message: "Login successful",

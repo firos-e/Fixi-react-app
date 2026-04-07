@@ -1,0 +1,11 @@
+{
+  "installCommand": "npm install --prefix CLient && npm install --prefix server",
+  "buildCommand": "npm run build --prefix CLient",
+  "outputDirectory": "CLient/dist",
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
