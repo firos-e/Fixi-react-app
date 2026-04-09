@@ -21,7 +21,9 @@ const formatTime = (value) => {
   });
 };
 
-function BookingChat({ bookingId, viewerRole, title, socket, unreadCount = 0, onSummaryChange }) {
+const CHAT_POLL_INTERVAL_MS = 15000;
+
+function BookingChat({ bookingId, viewerRole, title, unreadCount = 0, onSummaryChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [chatLoading, setChatLoading] = useState(false);
@@ -85,30 +87,19 @@ function BookingChat({ bookingId, viewerRole, title, socket, unreadCount = 0, on
   }, [bookingId, isOpen]);
 
   useEffect(() => {
-    if (!socket || !isOpen) {
+    if (!isOpen) {
       return undefined;
     }
 
-    const handleIncomingMessage = (payload) => {
-      if (payload.bookingId !== bookingId) {
-        return;
-      }
-
-      upsertMessage(payload.chatMessage);
-
-      if (payload.chatMessage.senderRole !== viewerRole) {
-        markAsRead();
-      }
-    };
-
-    socket.emit("chat:join-booking", bookingId);
-    socket.on("chat:message", handleIncomingMessage);
+    const intervalId = window.setInterval(() => {
+      loadMessages();
+      markAsRead();
+    }, CHAT_POLL_INTERVAL_MS);
 
     return () => {
-      socket.emit("chat:leave-booking", bookingId);
-      socket.off("chat:message", handleIncomingMessage);
+      window.clearInterval(intervalId);
     };
-  }, [bookingId, isOpen, socket, viewerRole]);
+  }, [bookingId, isOpen, viewerRole]);
 
   const sortedMessages = useMemo(
     () => [...messages].sort((first, second) => new Date(first.createdAt) - new Date(second.createdAt)),
@@ -157,7 +148,7 @@ function BookingChat({ bookingId, viewerRole, title, socket, unreadCount = 0, on
       {isOpen ? (
         <div className={styles.chatPanel}>
           <div className={styles.toolbar}>
-            <span className={styles.toolbarText}>Messages update automatically while this chat is open.</span>
+            <span className={styles.toolbarText}>Messages refresh automatically every few seconds while this chat is open.</span>
             <button type="button" className={styles.refreshBtn} onClick={() => loadMessages(true)}>
               Refresh
             </button>

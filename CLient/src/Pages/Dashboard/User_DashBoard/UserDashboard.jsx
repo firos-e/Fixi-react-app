@@ -5,8 +5,9 @@ import BookingChat from "../../../Components/BookingChat/BookingChat";
 import { getUserBookings, updateBookingStatus } from "../../../api/booking";
 import { getCurrentUser, updateProfile } from "../../../api/auth";
 import { getUnreadChatSummary } from "../../../api/chat";
-import { connectChatSocket, disconnectChatSocket } from "../../../socket";
 import { FiBell } from "react-icons/fi";
+
+const SUMMARY_POLL_INTERVAL_MS = 15000;
 
 const services = [
   { icon: "Pl", title: "Plumbing", desc: "Fix leaks, pipes and fittings" },
@@ -65,7 +66,6 @@ function UserDashboard() {
     totalUnreadBookings: 0,
     bookings: []
   });
-  const [chatSocket, setChatSocket] = useState(null);
   const bookingSectionRef = useRef(null);
 
   const handleLogout = () => {
@@ -219,24 +219,10 @@ function UserDashboard() {
     };
 
     loadChatSummary();
-
-    const token = localStorage.getItem("token");
-    const socket = connectChatSocket(token);
-    setChatSocket(socket);
-
-    if (!socket) {
-      return undefined;
-    }
-
-    const handleSummary = (summary) => {
-      setChatSummary(summary);
-    };
-
-    socket.on("chat:summary", handleSummary);
+    const intervalId = window.setInterval(loadChatSummary, SUMMARY_POLL_INTERVAL_MS);
 
     return () => {
-      socket.off("chat:summary", handleSummary);
-      disconnectChatSocket();
+      window.clearInterval(intervalId);
     };
   }, []);
 
@@ -436,7 +422,6 @@ function UserDashboard() {
                   bookingId={booking._id}
                   viewerRole="user"
                   title={`Chat with ${booking.technician?.name || "technician"}`}
-                  socket={chatSocket}
                   unreadCount={unreadByBooking[booking._id] || 0}
                   onSummaryChange={setChatSummary}
                 />
