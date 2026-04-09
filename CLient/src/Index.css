@@ -12,9 +12,11 @@ html, body, #root {
 body {
   background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
   color: white;
+  min-height: 100vh; /* ✅ add this */
 }
 
 /* Smooth transitions */
 button, input {
   transition: all 0.3s ease;
 }
+
